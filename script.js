@@ -1,3 +1,5 @@
+const items = document.querySelector('.items');
+
 const createProductImageElement = (imageSource) => {
   const img = document.createElement('img');
   img.className = 'item__image';
@@ -37,7 +39,12 @@ const createCartItemElement = ({ sku, name, salePrice }) => {
   li.addEventListener('click', cartItemClickListener);
   return li;
 };
-function listagemProdutos () {
-  
-}
-window.onload = () => { };
+const listagemProdutos = async () => {
+const { results } = await fetchProducts('computador');
+results.forEach((item) => {
+const { id, title, thumbnail } = item;
+const a = createProductItemElement({ sku: id, name: title, image: thumbnail });
+items.appendChild(a);
+});
+};
+window.onload = async () => { await listagemProdutos(); };
