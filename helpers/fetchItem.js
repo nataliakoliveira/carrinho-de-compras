@@ -1,11 +1,9 @@
 const fetchItem = async (id) => {
-  try {
-    const resposta = await fetch(`https://api.mercadolibre.com/items/${id}`);
-    const { results } = await resposta.json();
-    return results;
-  } catch (error) {
-    throw new Error('You must provide an url');
-  }
+  const resposta = await fetch(`https://api.mercadolibre.com/items/${id}`)
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((error) => error);
+  return resposta;
 };
 
 if (typeof module !== 'undefined') {

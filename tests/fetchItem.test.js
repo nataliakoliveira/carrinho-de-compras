@@ -14,11 +14,11 @@ describe('2 - Teste a função fetchItem', () => {
     await fetchItem('MLB1615760527');
     expect(fetch).toHaveBeenCalledWith('https://api.mercadolibre.com/items/MLB1615760527');
   });
-  it.only('Teste se o retorno da função fetchItem com o argumento do item "MLB1615760527" é uma estrutura de dados igual ao objeto item que já está importado no arquivo', async () => {
+  it('Teste se o retorno da função fetchItem com o argumento do item "MLB1615760527" é uma estrutura de dados igual ao objeto item que já está importado no arquivo', async () => {
     const items = await fetchItem('MLB1615760527');
     expect(items).toEqual(item);
   });
   it('Teste se, ao chamar a função fetchItem sem argumento, retorna um erro com a mensagem: "You must provide an url"', async () => {
-    await expect(fetchItem()).rejects.toThrow('You must provide an url');
+    expect(await fetchItem()).toEqual(new Error('You must provide an url'));
   });
 });
