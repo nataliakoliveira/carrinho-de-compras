@@ -37,5 +37,7 @@ const createCartItemElement = ({ sku, name, salePrice }) => {
   li.addEventListener('click', cartItemClickListener);
   return li;
 };
-
+function listagemProdutos () {
+  
+}
 window.onload = () => { };
