@@ -29,7 +29,7 @@ const createProductItemElement = ({ sku, name, image }) => {
 const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
 
 const cartItemClickListener = (event) => {
-  event.target.parentNode.removeChild(event.target);
+  event.target.remove();
 };
 
 const createCartItemElement = ({ sku, name, salePrice }) => {
@@ -41,6 +41,8 @@ const createCartItemElement = ({ sku, name, salePrice }) => {
 };
 const listagemProdutos = async () => {
 const { results } = await fetchProducts('computador');
+const h1 = document.querySelector('.loading');
+h1.remove();
 results.forEach((item) => {
 const { id, title, thumbnail } = item;
 const a = createProductItemElement({ sku: id, name: title, image: thumbnail });
