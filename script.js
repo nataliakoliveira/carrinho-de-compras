@@ -1,6 +1,7 @@
 const items = document.querySelector('.items');
 const buttonAdd = document.querySelectorAll('.item__add');
 const cartItems = document.querySelector('.cart__items');
+const EmptyButton = document.querySelector('.empty-cart');
 
 const createProductImageElement = (imageSource) => {
   const img = document.createElement('img');
@@ -60,4 +61,9 @@ const listagemProdutos = async () => {
     items.appendChild(a);
   });
 };
+
+EmptyButton.addEventListener('click', () => {
+ cartItems.innerHTML = '';
+});
+
 window.onload = async () => { await listagemProdutos(); };
